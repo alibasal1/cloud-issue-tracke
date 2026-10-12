@@ -1,0 +1,12 @@
+backend/
+  .gitkeep
+docs/
+  .gitkeep
+evidence/
+  .gitkeep
+frontend/
+  css/style.css
+  js/app.js
+  index.html
+.gitignore
+README.md
