@@ -1,125 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Issue Tracker</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">Operations dashboard</p>
-          <h1>Cloud Issue Tracker</h1>
-        </div>
-        <button type="button" id="reset-demo" class="ghost-button">Reset demo data</button>
-      </header>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="app-header">
+    <h1>Cloud Issue Tracker</h1>
+    <p>Report and track simple technical issues.</p>
+</header>
 
-      <section class="stats-grid" aria-label="Issue summary">
-        <article class="stat-card total">
-          <span class="label">Total</span>
-          <strong id="stat-total">0</strong>
-        </article>
-        <article class="stat-card open">
-          <span class="label">Open</span>
-          <strong id="stat-open">0</strong>
-        </article>
-        <article class="stat-card progress">
-          <span class="label">In progress</span>
-          <strong id="stat-progress">0</strong>
-        </article>
-        <article class="stat-card resolved">
-          <span class="label">Resolved</span>
-          <strong id="stat-resolved">0</strong>
-        </article>
-      </section>
+<main class="container">
+    <section class="panel">
+        <h2>Create Issue</h2>
+        <form id="issue-form">
+            <label for="title">Title</label>
+            <input id="title" name="title" type="text" required>
 
-      <main class="workspace">
-        <section class="panel form-panel">
-          <div class="panel-header">
-            <h2>Create issue</h2>
-          </div>
+            <label for="description">Description</label>
+            <textarea id="description" name="description" required></textarea>
 
-          <form id="issue-form" class="issue-form">
-            <label>
-              <span>Issue title</span>
-              <input id="issue-title" name="title" type="text" maxlength="90" placeholder="e.g. Fix API timeout" required />
-            </label>
+            <label for="priority">Priority</label>
+            <select id="priority" name="priority" required>
+                <option>Low</option>
+                <option selected>Medium</option>
+                <option>High</option>
+            </select>
 
-            <label>
-              <span>Description</span>
-              <textarea id="issue-description" name="description" rows="4" maxlength="500" placeholder="Describe the problem, request, or incident" required></textarea>
-            </label>
+            <button type="submit">Submit Issue</button>
+        </form>
+        <p id="form-message" aria-live="polite"></p>
+    </section>
 
-            <div class="field-row">
-              <label>
-                <span>Assignee</span>
-                <input id="issue-assignee" name="assignee" type="text" maxlength="40" placeholder="Team member" required />
-              </label>
+    <section class="panel">
+        <h2>Current Issues</h2>
+        <p><strong>Total issues:</strong> <span id="issue-count">0</span></p>
+        <div id="issues-list"></div>
+    </section>
+</main>
 
-              <label>
-                <span>Priority</span>
-                <select id="issue-priority" name="priority">
-                  <option value="Low">Low</option>
-                  <option value="Medium" selected>Medium</option>
-                  <option value="High">High</option>
-                  <option value="Critical">Critical</option>
-                </select>
-              </label>
-            </div>
-
-            <div class="field-row">
-              <label>
-                <span>Status</span>
-                <select id="issue-status" name="status">
-                  <option value="Open" selected>Open</option>
-                  <option value="In Progress">In Progress</option>
-                  <option value="Resolved">Resolved</option>
-                </select>
-              </label>
-
-              <label>
-                <span>Due date</span>
-                <input id="issue-due-date" name="dueDate" type="date" />
-              </label>
-            </div>
-
-            <button class="primary-button" type="submit">Add issue</button>
-          </form>
-        </section>
-
-        <section class="panel list-panel">
-          <div class="panel-header panel-header-split">
-            <h2>Issue board</h2>
-            <div class="controls">
-              <label class="search-box" aria-label="Search issues">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M10.5 3a7.5 7.5 0 015.96 12.72l4.25 4.25 1.41-1.41-4.25-4.25A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 0 104.02 9.4A5.5 5.5 0 0010.5 5z"/>
-                </svg>
-                <input id="search-input" type="search" placeholder="Search issues" />
-              </label>
-
-              <select id="status-filter" aria-label="Filter by status">
-                <option value="all">All statuses</option>
-                <option value="Open">Open</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Resolved">Resolved</option>
-              </select>
-            </div>
-          </div>
-
-          <ul id="issue-list" class="issue-list" aria-live="polite"></ul>
-        </section>
-      </main>
-    </div>
-
-    <script src="js/app.js" defer></script>
-  </body>
+<script src="js/app.js" defer></script>
+</body>
 </html>

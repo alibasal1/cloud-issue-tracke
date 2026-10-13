@@ -50,4 +50,22 @@ input, textarea, select, button {
     .container {
         grid-template-columns: 1fr;
     }
+    #issues-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.issue-card button {
+    margin-top: 0.75rem;
+}
+
+#form-message {
+    min-height: 1.25rem;
+    font-weight: 600;
+}
+    .issue-card.resolved {
+    background: #e6f4ea;
+    border-color: #2e7d32;
+    opacity: 0.85;
+}
 }
